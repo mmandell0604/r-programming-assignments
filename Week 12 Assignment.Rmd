@@ -1,0 +1,105 @@
+---
+title: "Untitled"
+output: html_document
+date: "2026-11-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# Introduction
+
+R Markdown is a tool that allows users to combine written explanations, R code, and mathematical equations into one document. It is commonly used in data analysis because it makes it possible to explain results while showing the code used to produce them. Documents created with R Markdown can be converted into HTML, PDF, or Word files.
+
+The purpose of this assignment is to practice using Markdown formatting, inserting mathematical expressions, running R code chunks, and creating a finished HTML report. This workflow also makes it easier for other people to understand and reproduce an analysis.
+
+# Markdown Formatting and LaTeX Math
+
+Markdown provides a simple way to organize and format written information. It supports different heading levels, paragraphs, numbered lists, bullet points, and text formatting such as **bold** and *italic* text.
+
+R Markdown also supports LaTeX for writing mathematical equations. An example of an inline equation is $\alpha + \beta = \gamma$. This allows mathematical expressions to be included naturally within a paragraph.
+
+A displayed mathematical equation can be written as:
+
+$$
+y = mx + b
+$$
+
+This equation represents a linear relationship between two variables, where $m$ is the slope and $b$ is the y-intercept.
+
+# Working with Data in R
+
+For this assignment, I used the built-in `mtcars` dataset in R. This dataset contains information about different car models, including miles per gallon (mpg), horsepower (hp), and weight (wt).
+
+## Loading and Exploring the Dataset
+
+The first code chunk loads the dataset and displays its first six rows and summary statistics. The summary helps identify the range and distribution of the variables.
+
+```{r data-summary}
+# Load the built-in dataset
+data(mtcars)
+
+# Display the first six rows
+head(mtcars)
+
+# Display summary statistics
+summary(mtcars)
+```
+
+The summary statistics provide a quick overview of the dataset. They include minimum values, maximum values, medians, and means. These statistics help explain the data before moving on to visualization.
+
+## Creating a Data Visualization
+
+The second code chunk creates a scatterplot comparing horsepower and miles per gallon. This visualization helps show whether engine horsepower is related to fuel efficiency.
+
+```{r scatterplot, fig.width=7, fig.height=5}
+# Create a scatterplot
+plot(mtcars$hp, mtcars$mpg,
+     main = "Horsepower vs. Miles Per Gallon",
+     xlab = "Horsepower",
+     ylab = "Miles Per Gallon",
+     col = "blue",
+     pch = 19)
+
+# Add a trend line
+abline(lm(mpg ~ hp, data = mtcars), col = "red", lwd = 2)
+```
+
+The scatterplot shows a negative relationship between horsepower and miles per gallon. In general, vehicles with higher horsepower tend to have lower fuel efficiency. The red trend line makes this relationship easier to see.
+
+# Comparing the R Markdown Source and HTML Output
+
+The R Markdown source file contains the original text, formatting instructions, and executable R code chunks. The HTML output displays the finished document with formatted headings, paragraphs, mathematical equations, and the results of the R code.
+
+One difference I noticed is that the source file contains code and formatting symbols that are not displayed in the same way in the finished HTML document. Instead, the HTML document presents the information in a more organized and readable format.
+
+An important tip I learned is to organize the document with clear headings and give each code chunk a name. This makes the source easier to follow and helps identify errors when knitting the document.
+
+# Conclusion and Reflection
+
+Overall, this assignment helped me understand how R Markdown combines programming and writing into one workflow. I learned how to use Markdown syntax for formatting, LaTeX for mathematical expressions, and R code chunks to perform basic data analysis and create visualizations.
+
+One challenge was understanding how code chunks work and making sure the document knitted correctly. I also noticed that the finished HTML output looks different from the original source file because the formatting instructions are converted into a readable report.
+
+Compared to writing a plain report, I found R Markdown useful because it keeps the explanations, code, and results together. If the data or code changes, I can knit the document again to update the results without manually rewriting the report. This makes the process more organized and helps make data analysis reproducible.
